@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include "SDL.h"
 
-//#include "event_handler.c"
+#include "event_handler.h"
+#include "game.h"
 
 #define FPS 25
 #define SKIP_TIME 1000/FPS
@@ -18,8 +19,8 @@ int main()
 
     while (!quit)
     {
-        //update_game();
-        //display_game();
+        update_game();
+        display_game();
 
         //Check if quit events have come
 
