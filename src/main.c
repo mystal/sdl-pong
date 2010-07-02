@@ -12,6 +12,8 @@ int main()
 {
     SDL_Init(SDL_INIT_VIDEO);
 
+    game_init();
+
     bool quit = false;
 
     unsigned int next_game_tick = SDL_GetTicks();
@@ -19,8 +21,8 @@ int main()
 
     while (!quit)
     {
-        update_game();
-        display_game();
+        game_update();
+        game_display();
 
         //Check if quit events have come
 
