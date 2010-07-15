@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdbool.h>
 #include "SDL.h"
 
 #include "ball.h"
@@ -13,8 +14,12 @@ player player2;
 
 ball ball1;
 
+SDL_Surface *screen;
+
 void game_init();
 
-void game_update();
+bool game_update();
 
 void game_display();
+
+void game_cleanup();

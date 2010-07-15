@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "SDL.h"
 
-#include "event_handler.h"
 #include "game.h"
 
 #define FPS 25
@@ -21,10 +20,8 @@ int main()
 
     while (!quit)
     {
-        game_update();
+        quit = game_update();
         game_display();
-
-        //Check if quit events have come
 
         next_game_tick += SKIP_TIME;
         sleep_time = next_game_tick - SDL_GetTicks();
@@ -35,4 +32,10 @@ int main()
             //Shit! We're running behind
         }
     }
+
+    game_cleanup();
+
+    SDL_Quit();
+
+    return 0;
 }
