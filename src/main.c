@@ -15,8 +15,8 @@ int main()
 
     bool quit = false;
 
-    unsigned int next_game_tick = SDL_GetTicks();
-    unsigned int sleep_time = 0;
+    int next_game_tick = SDL_GetTicks();
+    int sleep_time = 0;
 
     while (!quit)
     {
@@ -30,6 +30,7 @@ int main()
         else
         {
             //Shit! We're running behind
+            fprintf(stderr, "Lag...\n");
         }
     }
 

@@ -1,8 +1,8 @@
 #include "event_handler.h"
 
+#include <stdio.h>
+
 #include "game.h"
-
-
 
 bool handle_events()
 {
@@ -17,8 +17,7 @@ bool handle_events()
             //A Keyboard event, pass data to PrintKeyInfo
             case SDL_KEYDOWN:
             case SDL_KEYUP:
-                //printKeyInfo(&event.key);
-                handle_key();
+                handle_key(&event.key);
                 break;
 
             //SDL_QUIT event (window close)
@@ -33,6 +32,6 @@ bool handle_events()
     return quit;
 }
 
-void handle_key()
+void handle_key(SDL_KeyboardEvent *key)
 {
 }
