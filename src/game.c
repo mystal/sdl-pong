@@ -35,6 +35,10 @@ bool game_update()
 {
     bool quit = false;
     quit = handle_events();
+    if (player1.moving != 0)
+        player_move(&player1);
+    if (player2.moving != 0)
+        player_move(&player2);
     return quit;
 }
 
@@ -70,4 +74,7 @@ void game_display()
 void game_cleanup()
 {
     SDL_FreeSurface(bg);
+    SDL_FreeSurface(wall);
+    SDL_FreeSurface(p);
+    SDL_FreeSurface(b);
 }

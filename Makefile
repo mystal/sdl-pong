@@ -1,5 +1,6 @@
-CC := clang
 PLATFORM := OSX
+
+CC := clang
 
 SRCDIR := src/
 BUILDDIR := build/

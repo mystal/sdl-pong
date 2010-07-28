@@ -5,7 +5,10 @@
 
 typedef struct __player {
     int pos;
+    int moving;
     unsigned int score;
 } player;
 
 void player_init(player *);
+
+void player_move(player *);

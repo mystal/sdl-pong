@@ -1,6 +1,7 @@
 #include "event_handler.h"
 
 #include <stdio.h>
+#include "SDL.h"
 
 #include "game.h"
 
@@ -34,4 +35,32 @@ bool handle_events()
 
 void handle_key(SDL_KeyboardEvent *key)
 {
+    if (key->keysym.sym == SDLK_UP)
+    {
+        if (key->state == SDL_PRESSED)
+            player1.moving = 1;
+        else
+            player1.moving = 0;
+    }
+    else if (key->keysym.sym == SDLK_DOWN)
+    {
+        if (key->state == SDL_PRESSED)
+            player1.moving = -1;
+        else
+            player1.moving = 0;
+    }
+    if (key->keysym.sym == SDLK_w)
+    {
+        if (key->state == SDL_PRESSED)
+            player2.moving = 1;
+        else
+            player2.moving = 0;
+    }
+    else if (key->keysym.sym == SDLK_s)
+    {
+        if (key->state == SDL_PRESSED)
+            player2.moving = -1;
+        else
+            player2.moving = 0;
+    }
 }
