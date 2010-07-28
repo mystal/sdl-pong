@@ -4,6 +4,8 @@
 
 #include "player.h"
 
+#define BALL_SIZE 20
+
 typedef struct __ball {
     int posX;
     int posY;
