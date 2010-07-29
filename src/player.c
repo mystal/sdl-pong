@@ -13,11 +13,11 @@ void player_move(player *p)
 {
     if (p->moving == 1)
     {
-        p->pos -= 10;
+        p->pos -= PLAYER_SPEED;
     }
     else if (p->moving == -1)
     {
-        p->pos += 10;
+        p->pos += PLAYER_SPEED;
     }
     if (p->pos < TOP_WALL)
         p->pos = TOP_WALL;

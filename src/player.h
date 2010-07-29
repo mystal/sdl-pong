@@ -2,6 +2,7 @@
 
 #define PLAYER_WIDTH 20
 #define PLAYER_HEIGHT 100
+#define PLAYER_SPEED 10
 
 typedef struct __player {
     int pos;

@@ -11,7 +11,7 @@ SDL_INCS := `sdl-config --cflags`
 SDL_LIBS := `sdl-config --libs`
 
 INCS := $(SDL_INCS)
-LIBS := $(SDL_LIBS)
+LIBS := -lm $(SDL_LIBS)
 
 #COMPILE := $(CC) $(INCS) $(LIBS)
 

@@ -9,6 +9,8 @@
 
 void game_init()
 {
+    srandomdev();
+
     player_init(&player1);
     player_init(&player2);
 
@@ -39,6 +41,7 @@ bool game_update()
         player_move(&player1);
     if (player2.moving != 0)
         player_move(&player2);
+    ball_move(&ball1);
     return quit;
 }
 
