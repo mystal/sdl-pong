@@ -19,6 +19,19 @@ void ball_move(ball *b)
 {
     b->posX += round(BALL_SPEED*cos(b->angle));
     b->posY += round(BALL_SPEED*sin(b->angle));
+
+    if (b->posY <= TOP_WALL) //Check hit top wall
+    {
+        b->posY = (TOP_WALL - b->posY) + TOP_WALL;
+        //flip angle across horizontal
+        b->angle = 2*M_PI - b->angle;
+    }
+    else if ((b->posY + BALL_SIZE) >= BOT_WALL) //Check hit bottom wall
+    {
+        b->posY = BOT_WALL - (b->posY + BALL_SIZE - BOT_WALL) - BALL_SIZE;
+        //flip angle across horizontal
+        b->angle = 2*M_PI - b->angle;
+    }
 }
 
 bool hit_player(ball *b, player *p)
