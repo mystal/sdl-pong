@@ -2,6 +2,6 @@
 
 #include <stdbool.h>
 
-bool handle_events();
+void event_handler_init();
 
-void handle_key();
+bool handle_events();

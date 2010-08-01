@@ -4,6 +4,28 @@
 #include "SDL.h"
 
 #include "game.h"
+#include "player.h"
+
+typedef struct __key_state {
+    SDLKey key;
+    unsigned int state : 8;
+} key_state;
+
+key_state keys[4];
+
+void handle_key(SDL_KeyboardEvent *);
+
+void event_handler_init()
+{
+    keys[0].key = SDLK_UP;
+    keys[1].key = SDLK_DOWN;
+    keys[2].key = SDLK_w;
+    keys[3].key = SDLK_s;
+    keys[0].state = SDL_RELEASED;
+    keys[1].state = SDL_RELEASED;
+    keys[2].state = SDL_RELEASED;
+    keys[3].state = SDL_RELEASED;
+}
 
 bool handle_events()
 {
@@ -36,31 +58,29 @@ bool handle_events()
 void handle_key(SDL_KeyboardEvent *key)
 {
     if (key->keysym.sym == SDLK_UP)
-    {
-        if (key->state == SDL_PRESSED)
-            player1.moving = 1;
-        else
-            player1.moving = 0;
-    }
+        keys[0].state = key->state;
     else if (key->keysym.sym == SDLK_DOWN)
-    {
-        if (key->state == SDL_PRESSED)
-            player1.moving = -1;
-        else
-            player1.moving = 0;
-    }
+        keys[1].state = key->state;
     if (key->keysym.sym == SDLK_w)
-    {
-        if (key->state == SDL_PRESSED)
-            player2.moving = 1;
-        else
-            player2.moving = 0;
-    }
+        keys[2].state = key->state;
     else if (key->keysym.sym == SDLK_s)
-    {
-        if (key->state == SDL_PRESSED)
-            player2.moving = -1;
-        else
-            player2.moving = 0;
-    }
+        keys[3].state = key->state;
+
+    if (keys[0].state == SDL_PRESSED && keys[1].state == SDL_PRESSED)
+        player1.moving = 0;
+    else if (keys[0].state == SDL_PRESSED)
+        player1.moving = 1;
+    else if (keys[1].state == SDL_PRESSED)
+        player1.moving = -1;
+    else
+        player1.moving = 0;
+
+    if (keys[2].state == SDL_PRESSED && keys[3].state == SDL_PRESSED)
+        player2.moving = 0;
+    else if (keys[2].state == SDL_PRESSED)
+        player2.moving = 1;
+    else if (keys[3].state == SDL_PRESSED)
+        player2.moving = -1;
+    else
+        player2.moving = 0;
 }

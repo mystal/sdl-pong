@@ -16,6 +16,8 @@ void game_init()
 
     ball_init(&ball1);
 
+    event_handler_init();
+
     screen = SDL_SetVideoMode(GAME_WIDTH, GAME_HEIGHT, GAME_DEPTH, SDL_SWSURFACE);
 
     bg = SDL_CreateRGBSurface(SDL_SWSURFACE, GAME_WIDTH, GAME_HEIGHT, GAME_DEPTH, 0, 0, 0, 0);
