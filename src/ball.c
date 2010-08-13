@@ -10,9 +10,10 @@ void ball_init(ball *b)
 {
     b->posX = GAME_WIDTH/2 - BALL_SIZE/2;
     b->posY = GAME_HEIGHT/2 - BALL_SIZE/2;
-    //double r = (double)random()/RAND_MAX;
-    //fprintf(stderr, "random number: %f\n", r);
     b->angle = 2*M_PI*((double)random()/RAND_MAX);
+    while ((b->angle > M_PI/4.0 && b->angle < M_PI*3.0/4.0) ||
+           (b->angle > M_PI*5.0/4.0 && b->angle < M_PI*7.0/4.0))
+        b->angle = 2*M_PI*((double)random()/RAND_MAX);
 }
 
 void ball_move(ball *b)
