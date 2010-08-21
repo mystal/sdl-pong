@@ -15,6 +15,9 @@
 #define TOP_WALL (WALL_HEIGHT)
 #define BOT_WALL (GAME_HEIGHT - WALL_HEIGHT)
 
+#define SCORE_WIDTH 15
+#define SCORE_HEIGHT 20
+
 player player1;
 player player2;
 
@@ -26,6 +29,10 @@ SDL_Surface *bg;
 SDL_Surface *wall;
 SDL_Surface *p;
 SDL_Surface *b;
+SDL_Surface *score1;
+SDL_Surface *score2;
+
+SDL_Surface *score_text[10];
 
 void game_init();
 

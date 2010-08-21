@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 #include "ball.h"
 #include "event_handler.h"
@@ -9,6 +10,8 @@
 
 void game_init()
 {
+    TTF_Init();
+
     srandomdev();
 
     player_init(&player1);
@@ -31,6 +34,20 @@ void game_init()
 
     b = SDL_CreateRGBSurface(SDL_SWSURFACE, BALL_SIZE, BALL_SIZE, GAME_DEPTH, 0, 0, 0, 0);
     SDL_FillRect(b, 0, SDL_MapRGB(b->format, 255, 255, 255));
+
+    TTF_Font *font = TTF_OpenFont("/Users/mystal/Programming/Games/ping/VeraMono.ttf", 30);
+
+    SDL_Color fg = {255, 255, 255};
+    for (int i = 0; i < 10; i++)
+    {
+        char num[2] = {'0' + i, '\0'};
+        score_text[i] = TTF_RenderText_Solid(font, num, fg);
+    }
+
+    TTF_CloseFont(font);
+
+    score1 = score_text[0];
+    score2 = score_text[0];
 
     game_display();
 }
@@ -68,10 +85,21 @@ void game_display()
     rect.y = player2.pos;
     SDL_BlitSurface(p, NULL, screen, &rect);
 
-    rect.w = rect.y = BALL_SIZE;
+    rect.w = rect.h = BALL_SIZE;
     rect.x = ball1.posX;
     rect.y = ball1.posY;
     SDL_BlitSurface(b, NULL, screen, &rect);
+
+    rect.w = score1->w;
+    rect.h = score1->h;
+    rect.x = GAME_WIDTH/2 - 80 - score1->w;
+    rect.y = 30;
+    SDL_BlitSurface(score1, NULL, screen, &rect);
+    rect.w = score2->w;
+    rect.h = score2->h;
+    rect.x = GAME_WIDTH/2 + 80;
+    rect.y = 30;
+    SDL_BlitSurface(score2, NULL, screen, &rect);
 
     SDL_Flip(screen);
 }
@@ -82,4 +110,6 @@ void game_cleanup()
     SDL_FreeSurface(wall);
     SDL_FreeSurface(p);
     SDL_FreeSurface(b);
+    for (int i = 0; i < 10; i++)
+        SDL_FreeSurface(score_text[i]);
 }
