@@ -17,10 +17,10 @@ void handle_key(SDL_KeyboardEvent *);
 
 void event_handler_init()
 {
-    keys[0].key = SDLK_UP;
-    keys[1].key = SDLK_DOWN;
-    keys[2].key = SDLK_w;
-    keys[3].key = SDLK_s;
+    keys[0].key = SDLK_w;
+    keys[1].key = SDLK_s;
+    keys[2].key = SDLK_UP;
+    keys[3].key = SDLK_DOWN;
     keys[0].state = SDL_RELEASED;
     keys[1].state = SDL_RELEASED;
     keys[2].state = SDL_RELEASED;
@@ -57,13 +57,13 @@ bool handle_events()
 
 void handle_key(SDL_KeyboardEvent *key)
 {
-    if (key->keysym.sym == SDLK_UP)
+    if (key->keysym.sym == keys[0].key)
         keys[0].state = key->state;
-    else if (key->keysym.sym == SDLK_DOWN)
+    else if (key->keysym.sym == keys[1].key)
         keys[1].state = key->state;
-    if (key->keysym.sym == SDLK_w)
+    if (key->keysym.sym == keys[2].key)
         keys[2].state = key->state;
-    else if (key->keysym.sym == SDLK_s)
+    else if (key->keysym.sym == keys[3].key)
         keys[3].state = key->state;
 
     if (keys[0].state == SDL_PRESSED && keys[1].state == SDL_PRESSED)
