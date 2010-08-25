@@ -17,8 +17,4 @@ void ball_init(ball *);
 
 void ball_move(ball *);
 
-bool hit_player(ball *, player *);
-
-bool hit_wall(ball *);
-
-bool scored(ball *);
+unsigned int ball_scored(ball *);

@@ -3,8 +3,7 @@
 #include <math.h>
 
 #include "game.h"
-
-int distance(int a, int b);
+#include "player.h"
 
 void ball_init(ball *b)
 {
@@ -35,14 +34,11 @@ void ball_move(ball *b)
     }
 }
 
-bool hit_player(ball *b, player *p)
+unsigned int ball_scored(ball *b)
 {
-}
-
-bool hit_wall(ball *b)
-{
-}
-
-bool scored(ball *b)
-{
+    if (b->posX < -10) //Player 2 scored
+        return 2;
+    else if (b->posX > GAME_WIDTH - 10) //Player 1 scored
+        return 1;
+    return 0;
 }

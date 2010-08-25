@@ -1,5 +1,6 @@
 #pragma once
 
+#define PLAYER_POSX 20
 #define PLAYER_WIDTH 20
 #define PLAYER_HEIGHT 100
 #define PLAYER_SPEED 10

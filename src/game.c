@@ -46,8 +46,8 @@ void game_init()
 
     TTF_CloseFont(font);
 
-    score1 = score_text[0];
-    score2 = score_text[0];
+    score1 = score_text[player1.score];
+    score2 = score_text[player2.score];
 
     game_display();
 }
@@ -61,6 +61,22 @@ bool game_update()
     if (player2.moving != 0)
         player_move(&player2);
     ball_move(&ball1);
+    int scored = ball_scored(&ball1);
+    if (scored != 0)
+    {
+        if (scored == 1)
+            player1.score++;
+        else
+            player2.score++;
+        if (player1.score > 9 || player2.score > 9)
+            quit = true;
+        else
+        {
+            score1 = score_text[player1.score];
+            score2 = score_text[player2.score];
+            ball_init(&ball1);
+        }
+    }
     return quit;
 }
 
@@ -78,10 +94,10 @@ void game_display()
 
     rect.w = PLAYER_WIDTH;
     rect.h = PLAYER_HEIGHT;
-    rect.x = 10;
+    rect.x = PLAYER_POSX;
     rect.y = player1.pos;
     SDL_BlitSurface(p, NULL, screen, &rect);
-    rect.x = GAME_WIDTH - PLAYER_WIDTH - 10;
+    rect.x = GAME_WIDTH - PLAYER_WIDTH - PLAYER_POSX;
     rect.y = player2.pos;
     SDL_BlitSurface(p, NULL, screen, &rect);
 
