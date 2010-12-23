@@ -94,10 +94,10 @@ void game_display()
 
     rect.w = PLAYER_WIDTH;
     rect.h = PLAYER_HEIGHT;
-    rect.x = PLAYER_POSX;
+    rect.x = PLAYER1_POSX;
     rect.y = player1.pos;
     SDL_BlitSurface(p, NULL, screen, &rect);
-    rect.x = GAME_WIDTH - PLAYER_WIDTH - PLAYER_POSX;
+    rect.x = PLAYER2_POSX;
     rect.y = player2.pos;
     SDL_BlitSurface(p, NULL, screen, &rect);
 

@@ -32,6 +32,21 @@ void ball_move(ball *b)
         //flip angle across horizontal
         b->angle = 2*M_PI - b->angle;
     }
+
+    if (b->posX <= (PLAYER1_POSX + PLAYER_WIDTH) && b->posY >= player1.pos &&
+        (b->posY + BALL_SIZE) <= (player1.pos + PLAYER_HEIGHT)) //Check hit player1
+    {
+        b->posX = (PLAYER1_POSX + PLAYER_WIDTH - b->posX) + PLAYER1_POSX + PLAYER_WIDTH;
+        //TODO flip angle across vertical
+        b->angle = (b->angle > M_PI) ? (2*M_PI - b->angle) + M_PI : M_PI - b->angle;
+    }
+    else if ((b->posX + BALL_SIZE) >= PLAYER2_POSX && b->posY >= player2.pos &&
+        (b->posY + BALL_SIZE) <= (player2.pos + PLAYER_HEIGHT)) //Check hit player2
+    {
+        b->posX = PLAYER2_POSX - (b->posX + BALL_SIZE - PLAYER2_POSX) - BALL_SIZE;
+        //TODO flip angle across vertical
+        b->angle = (b->angle > M_PI) ? (2*M_PI - b->angle) + M_PI : M_PI - b->angle;
+    }
 }
 
 unsigned int ball_scored(ball *b)
