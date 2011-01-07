@@ -7,7 +7,7 @@
 #define FPS 25
 #define SKIP_TIME 1000/FPS
 
-int main()
+int main(int argc, char** argv)
 {
     SDL_Init(SDL_INIT_VIDEO);
 
