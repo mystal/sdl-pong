@@ -1,6 +1,7 @@
 #include "game.h"
 
 #include <stdbool.h>
+#include <time.h>
 #include "SDL.h"
 #include "SDL_ttf.h"
 
@@ -12,7 +13,7 @@ void game_init()
 {
     TTF_Init();
 
-    srandomdev();
+    srandom(time(NULL));
 
     player_init(&player1);
     player_init(&player2);
@@ -35,7 +36,7 @@ void game_init()
     b = SDL_CreateRGBSurface(SDL_SWSURFACE, BALL_SIZE, BALL_SIZE, GAME_DEPTH, 0, 0, 0, 0);
     SDL_FillRect(b, 0, SDL_MapRGB(b->format, 255, 255, 255));
 
-    TTF_Font *font = TTF_OpenFont("/Users/mystal/Programming/Games/ping/VeraMono.ttf", 30);
+    TTF_Font *font = TTF_OpenFont("VeraMono.ttf", 30);
 
     SDL_Color fg = {255, 255, 255};
     for (int i = 0; i < 10; i++)
