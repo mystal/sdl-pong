@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.6)
 
 # Project name
-project(ping C)
+project(pong C)
 
 # Include modules for finding SDL
 include(FindSDL)
