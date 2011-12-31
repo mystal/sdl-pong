@@ -16,7 +16,20 @@
 #define BOT_WALL (GAME_HEIGHT - WALL_HEIGHT)
 
 #define PLAYER1_POSX (PLAYER_POSX)
+#define PLAYER1_LEFT (PLAYER1_POSX)
+#define PLAYER1_RIGHT (PLAYER1_POSX + PLAYER_WIDTH)
+#define PLAYER1_TOP (player1.pos)
+#define PLAYER1_BOT (player1.pos + PLAYER_HEIGHT)
 #define PLAYER2_POSX (GAME_WIDTH - PLAYER_WIDTH - PLAYER_POSX)
+#define PLAYER2_LEFT (PLAYER2_POSX)
+#define PLAYER2_RIGHT (PLAYER2_POSX + PLAYER_WIDTH)
+#define PLAYER2_TOP (player2.pos)
+#define PLAYER2_BOT (player2.pos + PLAYER_HEIGHT)
+
+#define BALL_LEFT (b->posX)
+#define BALL_RIGHT (b->posX + BALL_SIZE)
+#define BALL_TOP (b->posY)
+#define BALL_BOT (b->posY + BALL_SIZE)
 
 #define SCORE_WIDTH 15
 #define SCORE_HEIGHT 20
