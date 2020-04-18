@@ -23,6 +23,6 @@ else(SDLTTF_FOUND)
     message("Could not find SDL_ttf!")
 endif(SDLTTF_FOUND)
 
-add_definitions(-std=c99)
+add_definitions(--std=gnu99)
 
 add_subdirectory(src)
